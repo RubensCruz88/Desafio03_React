@@ -17,7 +17,7 @@ export const Main = styled.div`
 
 export const CardsContainer = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: calc(50% - 1rem) calc(50% - 1rem);
 	gap: 2rem;
 
 `

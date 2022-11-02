@@ -50,8 +50,13 @@ export const Footer = styled.div`
 	gap: 1.5rem;
 `
 
-export const Resume = styled.div`
+interface ResumeProps {
+	isShown: boolean
+}
+
+export const Resume = styled.div<ResumeProps>`
 	display: flex;
 	gap: 0.5rem;
 
+	visibility: ${props => props.isShown ? '' : 'hidden'}
 `

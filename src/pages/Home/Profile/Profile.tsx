@@ -1,15 +1,28 @@
 import { Container, Content, Footer, Header, Resume } from "./styles";
 import { FaExternalLinkSquareAlt, FaGithub, FaBuilding, FaUserFriends } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
 
-export function Profile() {
+interface Usuario {
+	avatar: string;
+	nome: string;
+	usuario: string;
+	empresa?: string;
+	seguidores: number;
+	linkGithub: string;
+}
+
+interface ProfileProps {
+	user: Usuario
+}
+
+export function Profile({user}: ProfileProps) {
+
 	return (
 		<Container>
-			<img src="https://conteudo.imguol.com.br/c/entretenimento/80/2017/04/25/a-atriz-zoe-saldana-como-neytiri-em-avatar-1493136439818_v2_900x506.jpg" />
+			<img src={user.avatar} />
 			<Content>
 				<Header>
-					<span className="name">Rubens Cruz</span>
-					<a>
+					<span className="name">{user.nome}</span>
+					<a href={user.linkGithub}>
 						GITHUB
 						<FaExternalLinkSquareAlt />
 					</a>
@@ -21,17 +34,17 @@ export function Profile() {
 					maiores ullam?
 				</div>
 				<Footer>
-					<Resume>
+					<Resume isShown={user.usuario !== null}>
 						<FaGithub />
-						rubenscruz88
+						{user.usuario}
 					</Resume>
-					<Resume>
+					<Resume isShown={user.empresa !== null}>
 						<FaBuilding />
-						RocketSeat
+						{user.empresa}
 					</Resume>
-					<Resume>
+					<Resume isShown={user.seguidores !== null}>
 						<FaUserFriends />
-						32 seguidores
+						{user.seguidores} seguidores
 					</Resume>
 				</Footer>
 			</Content>
